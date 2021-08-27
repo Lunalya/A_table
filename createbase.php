@@ -29,22 +29,22 @@
 
 
             try{
-                            $dbco = new PDO("mysql:host=$servname;dbname=$dbname", $user, $pass);
+                            $dbco = new PDO("mysql:host=$servname;dbname=$dbname");
                             $dbco->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-                            $table_client = "CREATE TABLE clients(
+                            $table_client = "CREATE TABLE IF NOT EXISTS 'clients'(
                                     numQR INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
                                     smartphone VARCHAR(30) NOT NULL,
                                     langue VARCHAR(30) NOT NULL,
                                     dates DATETIME NOT NULL)";
 
-                            $table_tables = "CREATE TABLE orga_tables(
+                            $table_tables = "CREATE TABLE IF NOT EXISTS 'orga_tables'(
                                     numTABLES INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
                                     emplacement VARCHAR(30) NOT NULL,
                                     situation VARCHAR(30) NOT NULL,
                                     chaises INT NOT NULL)";
 
-                            $table_qrCodes = "CREATE TABLE qr_codes(
+                            $table_qrCodes = "CREATE TABLE IF NOT EXISTS 'qr_codes'(
                                     numQR INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
                                     nom VARCHAR(30) NOT NULL,
                                     numTABLES INT NULL)";
